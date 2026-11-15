@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Învățare Limba Engleză — Platformă Interactivă</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- SIDEBAR STÂNGA -->
+    <aside class="sidebar">
+      <button class="free-lesson-btn active-top" id="btnFreeLesson" data-lesson="free">
+        <span>Lecție gratuită</span>
+        <span class="free-lesson-icon">→</span>
+      </button>
+
+      <div class="nav-section">
+        <div class="nav-section-title">A0</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-lesson="a0_primii_pasi">Primii pași</li>
+          <li class="nav-item" data-lesson="a0_despre_mine">Despre mine</li>
+          <li class="nav-item" data-lesson="a0_in_jurul_nostru">În jurul nostru</li>
+          <li class="nav-item" data-lesson="a0_in_fiecare_zi">În fiecare zi</li>
+          <li class="nav-item" data-lesson="a0_primii_pasi_2">Primii pași II</li>
+          <li class="nav-item" data-lesson="a0_primele_fraze">Primele fraze</li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-title">Timp</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-lesson="t_prezent_simplu">Prezentul simplu</li>
+          <li class="nav-item" data-lesson="t_prezent_continuu">Prezent continuu</li>
+          <li class="nav-item" data-lesson="t_trecut_simplu">Trecut simplu</li>
+          <li class="nav-item" data-lesson="t_trecut_continuu">Trecut continuu</li>
+          <li class="nav-item" data-lesson="t_prezent_perfect">Prezent perfect</li>
+          <li class="nav-item" data-lesson="t_prezent_perfect_continuu">Prezent perfect continuu</li>
+          <li class="nav-item" data-lesson="t_trecut_perfect">Trecut perfect</li>
+          <li class="nav-item" data-lesson="t_trecut_perfect_continuu">Trecut perfect continuu</li>
+          <li class="nav-item" data-lesson="t_viitor_simplu">Viitorul simplu</li>
+          <li class="nav-item" data-lesson="t_planuri_viitor">Planuri și intenții de viitor</li>
+          <li class="nav-item" data-lesson="t_viitor_continuu">Viitor continuu</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- COLOANA CENTRALĂ -->
+    <main class="main-column">
+      <h1 class="main-title" id="lessonTitle">Lecție de probă gratuită</h1>
+
+      <div class="stats-bar">
+        <div class="stat-pill stat-correct" id="correctCountPill">0 ori corect</div>
+        <div class="stat-pill stat-wrong" id="wrongCountPill">0 greșit</div>
+      </div>
+
+      <section class="exercise-card">
+        <div class="prompt-sentence" id="promptText">Se încarcă...</div>
+
+        <input
+          type="text"
+          id="answerInput"
+          class="answer-input"
+          placeholder="Scrie traducerea în engleză..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+
+        <div class="feedback-box" id="feedbackBox">
+          <div class="feedback-top">
+            <div>
+              <div class="status-badge">
+                <span class="status-dot" id="statusDot">✓</span>
+                <span id="statusLabel">Răspuns corect</span>
+              </div>
+              <div class="reference-translation" id="roMeaning"></div>
+            </div>
+
+            <button class="audio-btn" id="speakBtn" title="Ascultă pronunția în engleză">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="feedback-row">
+            <div class="row-label">
+              <span class="mini-pill-icon">Aa</span>
+              <span>În română</span>
+            </div>
+            <div class="row-value" id="roRowValue"></div>
+          </div>
+
+          <div class="feedback-row">
+            <div class="row-label">
+              <span class="mini-pill-icon">🎧</span>
+              <span>IPA</span>
+            </div>
+            <div class="row-value ipa-value" id="ipaRowValue"></div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <div class="left-actions">
+            <button class="btn-primary" id="checkBtn">Verifică</button>
+            <button class="btn-primary" id="nextBtn">Următorul</button>
+          </div>
+
+          <div class="right-actions">
+            <button class="btn-link" id="hintBtn">Cheie (3)</button>
+            <button class="btn-secondary-pill" id="giveUpBtn">Predare</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="bottom-pagination">
+        <button class="nav-circle-btn" id="prevPageBtn" title="Anteriorul">←</button>
+        <div class="progress-pill" id="progressPill">1/10</div>
+        <button class="nav-circle-btn" id="nextPageBtn" title="Următorul">→</button>
+        <button class="finish-btn" id="finishBtn">Termina</button>
+      </div>
+    </main>
+
+    <!-- PANOU DREAPTA -->
+    <aside class="right-panel">
+      <div class="info-block">
+        <div class="info-header">
+          <span class="info-icon">▤</span>
+          <span>Analiză</span>
+        </div>
+        <ul class="analysis-list" id="analysisList"></ul>
+      </div>
+
+      <div class="info-block">
+        <div class="info-header">
+          <span class="info-icon">💡</span>
+          <span>De ce este asta?</span>
+        </div>
+        <p class="explanation-text" id="explanationText"></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- MODAL REZULTAT FINAL -->
+  <div class="modal-overlay" id="resultModal">
+    <div class="modal-card">
+      <h2>Lecție finalizată!</h2>
+      <p id="modalSummary"></p>
+      <button class="btn-primary" id="restartBtn">Reia lecția</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
